@@ -1,2 +1,2 @@
 # politico-api
-API endpoints for politico app
+Api endpoints for politico app
