@@ -11,10 +11,10 @@ Api endpoints for politico app.Politico app enables citizens to vote,view poll r
 # Installation
 
 * clone the repo
-  $ git clone  https://github.com/Bettykirii/politico-api.git
+  * git clone  https://github.com/Bettykirii/politico-api.git
 
 * cd to project directory
-   $ cd politico-api
+   * cd politico-api
 
 * Create a virtual environment and activate :
 
