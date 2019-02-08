@@ -3,7 +3,7 @@ import time
 
 
 class Offices:
-    """ Methods to model party information """
+    """ Methods to model office information """
     def __init__(self, office_reg_data):
         self.office_reg_data = office_reg_data
 
@@ -11,14 +11,14 @@ class Offices:
         """ Validate, append, return custom message """
         
         msg = None
-        party_already_present = False
-        for each_party in Offices:
-            if each_party["name"] == self.office_reg_data["name"]:
-                party_already_present = True
-        if party_already_present:
+        office_already_present = False
+        for each_office in Offices:
+            if each_office["name"] == self.office_reg_data["name"]:
+                office_already_present = True
+        if office_already_present:
             msg = {
                 "status": "Failed",
-                "error": "Party already exists"
+                "error": "office already exists"
             }
         else:
             time_stamp = time.localtime(time.time())
@@ -49,10 +49,10 @@ class Offices:
         if "" in self.office_reg_data.values():
             msg = False
         elif (
-                self.office_reg_data["name"].isspace() or
-                self.office_reg_data["hqAddress"].isspace() or
-                self.office_reg_data["logoUrl"].isspace() or
-                self.office_reg_data["Party members"] < 1
+                self.office_reg_data["id"].isspace() or
+                self.office_reg_data["type"].isspace() or
+                self.office_reg_data["name"]< 1
+               
         ):
             msg = False
         else:
@@ -81,7 +81,7 @@ class Offices:
         if Offices == []:
             msg = {
                 "status": "200",
-                "data": "The Party list is empty"
+                "data": "The Office list is empty"
             }
 
         else:
