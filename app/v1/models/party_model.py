@@ -1,20 +1,18 @@
 import time
 
-P_PARTIES = []
-PARTY_COUNT = 1
 
+class Createparty():
+    """This class represents the createparty table."""
 
-class PParties:
-    """ Methods to model party information """
-    def __init__(self, party_reg_data):
+   def __init__(self, party_reg_data):
         self.party_reg_data = party_reg_data
 
     def create_party(self):
         """ Validate, append, return custom message """
-        global P_PARTIES, PARTY_COUNT
+        global Createparty
         msg = None
         party_already_present = False
-        for each_party in P_PARTIES:
+        for each_party in Createparty:
             if each_party["name"] == self.party_reg_data["name"]:
                 party_already_present = True
         if party_already_present:
@@ -24,10 +22,9 @@ class PParties:
             }
         else:
             time_stamp = time.localtime(time.time())
-            self.party_reg_data["id"] = PARTY_COUNT
-            PARTY_COUNT += 1
+           
             self.party_reg_data["registered on"] = time.asctime(time_stamp)
-            P_PARTIES.append(self.party_reg_data)
+            Createparty.append(self.party_reg_data)
             msg = {
                 "Status": "Success",
                 "data": [{
@@ -51,7 +48,7 @@ class PParties:
         if "" in self.party_reg_data.values():
             msg = False
         elif (
-                self.party_reg_data["name"].isspace() or
+                  self.party_reg_data["name"].isspace() or
                 self.party_reg_data["hqAddress"].isspace() or
                 self.party_reg_data["logoUrl"].isspace() or
                 self.party_reg_data["Party members"] < 1
@@ -73,23 +70,4 @@ class PParties:
             msg = True
         else:
             msg = False
-        return msg
-
-    def get_all_parties():
-        """ get all parties """
-        global P_PARTIES
-        msg = None
-
-        if P_PARTIES == []:
-            msg = {
-                "status": "200",
-                "data": "The Party list is empty"
-            }
-
-        else:
-            msg = {
-                "status": "200",
-                "data": POLITICAL_PARTIES
-            }
-
         return msg

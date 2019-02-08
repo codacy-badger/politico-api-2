@@ -1,19 +1,16 @@
 from flask import Blueprint, jsonify, request
-from app.v1.models.party_model import PParties
+from app.v1.models.party_model import Createparty
 
-B = Blueprint("v1", __name__, url_prefix="/app/v1")
+app = Blueprint("v1", __name__, url_prefix="/app/v1")
 
+   
 
-@B.route("/parties", methods=["POST"])
-def parties():
-    """
-        Create a political party - POST
-    """
-    custom_response = None
-    if request.method == "POST":
-        party_reg_data = request.get_json(force=True)
-        sample_party = PParties(party_reg_data)
-        if len(party_reg_data) > 4:
+    @app.route('/parties', methods=['POST', 'GET'])
+    def parties():
+        if request.method == "POST":
+             party_reg_data = request.get_json(force=True)
+             sample_party = Createparty(party_reg_data)
+             if len(party_reg_data) > 4:
             custom_response = jsonify({
                 "status": "Bad Query",
                 "error": "More data fields than expected"
@@ -33,12 +30,8 @@ def parties():
                 "status": "Unprocessable Entity",
                 "error": "Empty data field"
             }), 422
-            else:
-                custom_response = jsonify(sample_party.create_party()), 201
-
-    elif request.method == "GET":
-        custom_response = jsonify(PParties.get_all_parties())
-
+        else:
+            custom_response = jsonify(sample_party.create_party()), 201
     else:
         pass
 
