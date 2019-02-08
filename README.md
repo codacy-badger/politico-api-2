@@ -37,3 +37,8 @@ Before you work on your project, activate the corresponding environment:
 
 venv\Scripts\activate
 Your shell prompt will change to show the name of the activated environment.
+
+API endpoints | Function       | URL Route
+------------- | -------------  | -------------  
+POST Parties  | Create parties | app/v1/parties
+GET Parties   | get all parties| app/v1/parties
