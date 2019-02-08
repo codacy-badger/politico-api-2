@@ -5,13 +5,13 @@ app = Blueprint("v1", __name__, url_prefix="/app/v1")
 
    
 
-    @app.route('/parties', methods=['POST', 'GET'])
-    def parties():
+@app.route('/parties', methods=['POST', 'GET'])
+def parties():
         if request.method == "POST":
              party_reg_data = request.get_json(force=True)
              sample_party = Createparty(party_reg_data)
              if len(party_reg_data) > 4:
-            custom_response = jsonify({
+                custom_response = jsonify({
                 "status": "Bad Query",
                 "error": "More data fields than expected"
             }), 400
@@ -30,9 +30,14 @@ app = Blueprint("v1", __name__, url_prefix="/app/v1")
                 "status": "Unprocessable Entity",
                 "error": "Empty data field"
             }), 422
-        else:
-            custom_response = jsonify(sample_party.create_party()), 201
+            else:
+                custom_response = jsonify(sample_party.create_party()), 201
+
+    elif request.method == "GET":
+        custom_response = jsonify(Createparty.get_all_parties())
+
     else:
         pass
+
 
     return custom_response
