@@ -32,12 +32,12 @@ def parties():
             }), 422
             else:
                 custom_response = jsonify(sample_party.create_party()), 201
-
-    elif request.method == "GET":
+      elif request.method == "GET":
         custom_response = jsonify(Createparty.get_all_parties())
 
     else:
         pass
 
 
+    
     return custom_response
