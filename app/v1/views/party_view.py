@@ -39,6 +39,7 @@ def parties():
         pass
 
     return custom_response
+
 @app.route("/parties/<int:id>", methods=["GET"])
 def party(id):
     """
@@ -68,7 +69,6 @@ def party(id):
         pass
 
     return custom_response
-
 
     
    
