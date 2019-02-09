@@ -38,6 +38,37 @@ def parties():
     else:
         pass
 
+    return custom_response
+@app.route("/parties/<int:id>", methods=["GET"])
+def party(id):
+    """
+    GET -> Fetch political party by ID
+    """
+    custom_response = None
+
+    if request.method == "GET":
+
+        if isinstance(pid, int) and pid >= 1:
+            if Createparty.check_id_exists(id) is True:
+                custom_response = jsonify({
+                    "status": 200,
+                    "data": Createparty.fetch_a_party(id)
+                }), 200
+            else:
+                custom_response = jsonify({
+                    "status": 416,
+                    "error": "ID not found"
+                }), 416
+        elif id < 1:
+            custom_response = jsonify({
+                "status": "Failed",
+                "error": "ID can't be less than 1"
+            }), 400
+    else:
+        pass
+
+    return custom_response
+
 
     
-    return custom_response
+   
