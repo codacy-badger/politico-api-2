@@ -69,6 +69,40 @@ def party(id):
         pass
 
     return custom_response
+@app.route("/parties/<int:id>/name", methods=["PATCH"])
+def party_admin(id):
+    """ Edit politcal party  by id"""
+    custom_response = None
+    partylist= request.get_json(force=True)
 
+    if "name" not in partylist or len(partylist) != 1:
+        custom_response = jsonify({
+            "status": 400,
+            "error": "Bad Query - More data fields than expected"
+        }), 400
+    elif id < 1:
+        custom_response = jsonify({
+            "status": "Failed",
+            "error": "id cannot be zero"
+        }), 400
+    elif Createparty.check_id_exists(pid) is False:
+        custom_response = jsonify({
+            "status": 416,
+            "error": "id out of range. Requested Range Not Satisfiable"
+        }), 416
+
+    elif Createparty.check_for_valid_party_name(partylist["name"]):
+        custom_response = jsonify({
+            "status": 422,
+            "error": "Name cannot be empty/space or 1 letter",
+            }), 422
+
+    else:
+        custom_response = jsonify({
+            "status": 200,
+            "data": Createparty.edit_party(partylist, pid)
+            }), 200
+
+    return custom_response
     
    
