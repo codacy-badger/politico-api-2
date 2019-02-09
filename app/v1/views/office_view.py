@@ -35,11 +35,11 @@ def offices():
             }), 422
             else:
                 custom_response = jsonify(sample_office.create_offices()), 201
-
     elif request.method == "GET":
         custom_response = jsonify(Offices.get_all_offices())
 
     else:
         pass
+   
 
     return custom_response
