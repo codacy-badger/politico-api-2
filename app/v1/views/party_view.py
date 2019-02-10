@@ -1,11 +1,11 @@
 from flask import Blueprint, jsonify, request
 from app.v1.models.party_model import Createparty
 
-app = Blueprint("v1", __name__, url_prefix="/app/v1")
+bp= Blueprint("v1", __name__, url_prefix="/app/v1")
 
    
 
-@app.route('/parties', methods=['POST', 'GET'])
+@bp.route('/parties', methods=['POST', 'GET'])
 def parties():
         if request.method == "POST":
              party_reg_data = request.get_json(force=True)
@@ -40,7 +40,7 @@ def parties():
 
     return custom_response
 
-@app.route("/parties/<int:id>", methods=["GET"])
+@bp.route("/parties/<int:id>", methods=["GET"])
 def party(id):
     """
     GET -> Fetch political party by ID
@@ -69,8 +69,8 @@ def party(id):
         pass
 
     return custom_response
-@app.route("/parties/<int:id>/name", methods=["PATCH"])
-def party_admin(id):
+@bp.route("/parties/<int:id>/name", methods=["PATCH"])
+def party_delete(id):
     """ Edit politcal party  by id"""
     custom_response = None
     partylist= request.get_json(force=True)
@@ -105,7 +105,7 @@ def party_admin(id):
 
     return custom_response
     
-@app.route("/parties/<int:id>/name", methods=["DELETE"])
+@bp.route("/parties/<int:id>/name", methods=["DELETE"])
 def party_admin(id):
     """ delete politcal party  by id"""
     custom_response = None
@@ -121,7 +121,7 @@ def party_admin(id):
             "status": "Failed",
             "error": "id cannot be zero"
         }), 400
-    elif Createparty.check_id_exists(pid) is False:
+    elif Createparty.check_id_exists(id) is False:
         custom_response = jsonify({
             "status": 416,
             "error": "id out of range. Requested Range Not Satisfiable"
@@ -136,7 +136,7 @@ def party_admin(id):
     else:
         custom_response = jsonify({
             "status": 200,
-            "data": Createparty.edit_party(partylist, pid)
+            "data": Createparty.edit_party(partylist, id)
             }), 200
 
     return custom_response
