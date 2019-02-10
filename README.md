@@ -1,7 +1,7 @@
 # politico-api
 Api endpoints for politico app.Politico app enables citizens to vote,view poll results and view politicians who have expressed interests in the different government offices.
 
-[![Build Status](https://travis-ci.com/Bettykirii/politico-api.svg?branch=develop)](https://travis-ci.com/Bettykirii/politico-api)[![Maintainability](https://api.codeclimate.com/v1/badges/f40d762e3c56cb8f30a1/maintainability)](https://codeclimate.com/github/Bettykirii/politico-api/maintainability)[![Test Coverage](https://api.codeclimate.com/v1/badges/f40d762e3c56cb8f30a1/test_coverage)](https://codeclimate.com/github/Bettykirii/politico-api/test_coverage)[![Coverage Status](https://coveralls.io/repos/github/Bettykirii/politico-api/badge.svg?branch=master)](https://coveralls.io/github/Bettykirii/politico-api?branch=develop)
+[![Build Status](https://travis-ci.com/Bettykirii/politico-api.svg?branch=develop)](https://travis-ci.com/Bettykirii/politico-api)[![Maintainability](https://api.codeclimate.com/v1/badges/f40d762e3c56cb8f30a1/maintainability)](https://codeclimate.com/github/Bettykirii/politico-api/maintainability)[![Test Coverage](https://api.codeclimate.com/v1/badges/f40d762e3c56cb8f30a1/test_coverage)](https://codeclimate.com/github/Bettykirii/politico-api/test_coverage)[![Coverage Status](https://coveralls.io/repos/github/Bettykirii/politico-api/badge.svg?branch=master)](https://coveralls.io/github/Bettykirii/politico-api?branch=master)
 
 # Requirements
 * Git version
