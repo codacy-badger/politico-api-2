@@ -1,4 +1,4 @@
-rom flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request
 from app.v1.models.office_model import Offices
 
 app = Blueprint("v1", __name__, url_prefix="/app/v1")
