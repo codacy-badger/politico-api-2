@@ -1,0 +1,14 @@
+language: python
+
+python:
+  - "3.6"
+
+install:
+  - pip freeze > requirements.txt
+
+
+script:
+  - pytest --cov=app
+
+after_success:
+  - coveralls
